@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react';
 import { secureApi } from '@/utils/api';
 
-type OrderItem = { id: number; productId: number; productName: string; unitPrice: number; quantity: number };
-type Order = { id: number; createdAt: string; total: number; status: string; paymentStatus: string; items: OrderItem[] };
+import { Order } from '@/types';
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);

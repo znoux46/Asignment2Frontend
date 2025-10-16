@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import StripePaymentForm from '@/components/payment/StripePaymentForm';
 
-type CartItem = { productId: number; name: string; imageUrl?: string | null; unitPrice: number; quantity: number; lineTotal: number };
+import { CartItem } from '@/types';
 
 export default function CheckoutPage() {
   const router = useRouter();

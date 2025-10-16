@@ -1,10 +1,4 @@
-export type Product = {
-  id: number;
-  name: string;
-  description?: string | null;
-  price: number;
-  imageUrl?: string | null;
-};
+import { CartItem, Product, Order } from '@/types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5218";
 import { getAuth, type AuthUser } from "./auth";
@@ -63,7 +57,7 @@ export const api = {
     const user = await handle<AuthUser>(res);
     return user;
   },
-  async getCart(): Promise<import("./api").Product[]> { throw new Error("not implemented type stub"); }
+  async getCart(): Promise<CartItem[]> { throw new Error("not implemented type stub"); }
 };
 
 export const secureApi = {
@@ -95,7 +89,7 @@ export const secureApi = {
   async myOrders() {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/orders/me`, { headers: { Authorization: `Bearer ${au?.token ?? ""}` } });
-    return handle<CartItem[]>(res);
+    return handle<Order[]>(res);
   },
   async processPayment(orderId: number) {
     const au = getAuth();
@@ -112,7 +106,7 @@ export const secureApi = {
       },
       body: JSON.stringify({ orderId, amount, currency: "usd" })
     });
-    return handle<{ id: number; total: number }>(res);
+    return handle<{ clientSecret: string; paymentIntentId: string }>(res);
   },
   async confirmPayment(paymentIntentId: string) {
     const au = getAuth();

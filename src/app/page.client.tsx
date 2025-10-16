@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { api, type Product } from '@/utils/api';
+import { api } from '@/utils/api';
+import { type Product } from '@/types';
 
 export default function HomeClient() {
   const [all, setAll] = useState<Product[]>([]);

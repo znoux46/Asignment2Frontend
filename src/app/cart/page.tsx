@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { useToastContext } from '@/components/ui/ToastProvider';
 
-type CartItem = { productId: number; name: string; imageUrl?: string | null; unitPrice: number; quantity: number; lineTotal: number };
+import { CartItem } from '@/types';
 
 export default function CartPage() {
   const [items, setItems] = useState<CartItem[]>([]);
