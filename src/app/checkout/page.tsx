@@ -44,7 +44,6 @@ export default function CheckoutPage() {
       const res = await secureApi.checkout();
       setOrderId(res.id);
       setOrderCreated(true);
-      setPaymentStep('payment');
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : 'Checkout failed';
       setError(msg);
