@@ -4,8 +4,10 @@ const nextConfig: NextConfig = {
   // Enable experimental features for better performance
   experimental: {
     // Enable server components by default
-    serverComponentsExternalPackages: [],
   },
+  
+  // Server external packages (moved from experimental)
+  serverExternalPackages: [],
   
   // Optimize images for Vercel
   images: {

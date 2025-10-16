@@ -4,10 +4,10 @@ import { DeleteButton } from "./delete-button";
 import { AddToCartButton } from "./AddToCartButton";
 import { notFound } from "next/navigation";
 
-type Props = { params: { id: string } };
+type Props = { params: Promise<{ id: string }> };
 
 export default async function ProductDetail({ params }: Props) {
-  const { id } = params;
+  const { id } = await params;
   let product;
   try {
     product = await api.getProduct(Number(id));
