@@ -14,7 +14,7 @@ export default function CheckoutPage() {
   const [checkingOut, setCheckingOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<number | null>(null);
-  const [paymentStep] = useState<'checkout' | 'payment'>('checkout');
+  // const [paymentStep] = useState<'checkout' | 'payment'>('checkout');
   const [orderCreated, setOrderCreated] = useState(false);
 
   async function load() {
