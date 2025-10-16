@@ -11,7 +11,7 @@ export default async function ProductDetail({ params }: Props) {
   let product;
   try {
     product = await api.getProduct(Number(id));
-  } catch (e) {
+  } catch {
     return notFound();
   }
   return (

@@ -14,7 +14,7 @@ export default function CheckoutPage() {
   const [checkingOut, setCheckingOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<number | null>(null);
-  const [paymentStep, setPaymentStep] = useState<'checkout' | 'payment'>('checkout');
+  const [paymentStep] = useState<'checkout' | 'payment'>('checkout');
   const [orderCreated, setOrderCreated] = useState(false);
 
   async function load() {
@@ -53,7 +53,7 @@ export default function CheckoutPage() {
     }
   }
 
-  function handlePaymentSuccess(order: any) {
+  function handlePaymentSuccess(order: { id: number; total: number }) {
     alert(`Order #${order.id} placed successfully! Total: $${order.total.toFixed(2)}`);
     router.push('/orders');
   }
@@ -121,7 +121,7 @@ export default function CheckoutPage() {
                   </div>
                   
                   <div className="text-center py-8">
-                    <p className="text-gray-600 mb-4">Click "Proceed to Payment" to enter your payment details securely.</p>
+                    <p className="text-gray-600 mb-4">Click &quot;Proceed to Payment&quot; to enter your payment details securely.</p>
                   </div>
                 </>
               ) : (

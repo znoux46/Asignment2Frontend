@@ -13,7 +13,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
         <p className="text-gray-600 mb-4">Please try again or go back.</p>
         <div className="flex gap-3 justify-center">
           <button className="btn-accent" onClick={() => reset()}>Try again</button>
-          <a className="btn-outline" href="/">Home</a>
+          <Link className="btn-outline" href="/">Home</Link>
         </div>
       </div>
     </div>

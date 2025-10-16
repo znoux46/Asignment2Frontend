@@ -14,7 +14,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY 
 interface StripePaymentFormProps {
   orderId: number;
   amount: number;
-  onSuccess: (order: any) => void;
+  onSuccess: (order: { id: number; total: number }) => void;
   onError: (error: string) => void;
 }
 

@@ -6,7 +6,7 @@ export function AddToCartButton({ id }: { id: number }) {
     try {
       await secureApi.addToCart(id, 1);
       alert('Added to cart');
-    } catch (e) {
+    } catch {
       alert('Please login first');
     }
   }

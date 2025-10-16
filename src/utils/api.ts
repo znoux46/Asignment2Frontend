@@ -70,37 +70,37 @@ export const secureApi = {
   async getCart() {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/cart`, { headers: { Authorization: `Bearer ${au?.token ?? ""}` } });
-    return handle<any[]>(res);
+    return handle<CartItem[]>(res);
   },
   async addToCart(productId: number, quantity = 1) {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/cart`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${au?.token ?? ""}` }, body: JSON.stringify({ productId, quantity }) });
-    return handle<any[]>(res);
+    return handle<CartItem[]>(res);
   },
   async updateCartQuantity(productId: number, quantity: number) {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/cart/${productId}`, { method: "PUT", headers: { "Content-Type": "application/json", Authorization: `Bearer ${au?.token ?? ""}` }, body: JSON.stringify({ quantity }) });
-    return handle<any[]>(res);
+    return handle<CartItem[]>(res);
   },
   async removeFromCart(productId: number) {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/cart/${productId}`, { method: "DELETE", headers: { Authorization: `Bearer ${au?.token ?? ""}` } });
-    return handle<any[]>(res);
+    return handle<CartItem[]>(res);
   },
   async checkout() {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/cart/checkout`, { method: "POST", headers: { Authorization: `Bearer ${au?.token ?? ""}` } });
-    return handle<any>(res);
+    return handle<{ id: number; total: number }>(res);
   },
   async myOrders() {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/orders/me`, { headers: { Authorization: `Bearer ${au?.token ?? ""}` } });
-    return handle<any[]>(res);
+    return handle<CartItem[]>(res);
   },
   async processPayment(orderId: number) {
     const au = getAuth();
     const res = await fetch(`${API_BASE}/api/orders/${orderId}/pay`, { method: "POST", headers: { Authorization: `Bearer ${au?.token ?? ""}` } });
-    return handle<any>(res);
+    return handle<{ id: number; total: number }>(res);
   },
   async createPaymentIntent(orderId: number, amount: number) {
     const au = getAuth();
@@ -112,7 +112,7 @@ export const secureApi = {
       },
       body: JSON.stringify({ orderId, amount, currency: "usd" })
     });
-    return handle<any>(res);
+    return handle<{ id: number; total: number }>(res);
   },
   async confirmPayment(paymentIntentId: string) {
     const au = getAuth();
@@ -124,7 +124,7 @@ export const secureApi = {
       },
       body: JSON.stringify({ paymentIntentId })
     });
-    return handle<any>(res);
+    return handle<{ id: number; total: number }>(res);
   },
 };
 
