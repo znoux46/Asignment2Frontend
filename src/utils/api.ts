@@ -1,6 +1,7 @@
 import { CartItem, Product, Order } from '@/types';
+import config from '@/config/env';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5218";
+const API_BASE = config.API_BASE_URL;
 import { getAuth, type AuthUser } from "./auth";
 
 async function handle<T>(res: Response): Promise<T> {

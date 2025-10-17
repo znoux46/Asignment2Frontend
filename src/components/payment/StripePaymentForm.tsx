@@ -8,8 +8,9 @@ import {
   useElements
 } from '@stripe/react-stripe-js';
 import { secureApi } from '@/utils/api';
+import config from '@/config/env';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_test_51SIhyoAxH1mnQEoEMMoKVcoqXARPBoCs7DUlk90zeTGLjAvS5MO4CwdDxyzXXEEeHRa1wNms2Ks0IbHzHKkDU1rj00P53iY50p');
+const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY || 'pk_test_51SIhyoAxH1mnQEoEMMoKVcoqXARPBoCs7DUlk90zeTGLjAvS5MO4CwdDxyzXXEEeHRa1wNms2Ks0IbHzHKkDU1rj00P53iY50p');
 
 interface StripePaymentFormProps {
   orderId: number;
